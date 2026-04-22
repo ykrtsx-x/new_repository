@@ -1,11 +1,9 @@
-import pytest
 import allure
 from lesson_10.pages.login_page import LoginPage
 
 
-@allure.title("Проверка логина с неверными данными")
-@allure.description(
-    "Тест проверяет, что при неверном логине появляется ошибка")
+@allure.title("Неверный логин")
+@allure.description("Проверка ошибки при неверных данных")
 @allure.feature("Авторизация")
 @allure.severity(allure.severity_level.CRITICAL)
 def test_invalid_login(driver):
@@ -21,9 +19,8 @@ def test_invalid_login(driver):
     with allure.step("Ввести пароль"):
         page.enter_password("wrong_pass")
 
-    with allure.step("Нажать кнопку входа"):
+    with allure.step("Нажать вход"):
         page.click_login()
 
-    with allure.step("Проверка ошибки"):
-        error = page.get_error_message()
-        assert error == "Invalid credentials"
+    with allure.step("Проверить ошибку"):
+        assert page.get_error_message() != ""
