@@ -11,7 +11,7 @@ def test_invalid_login(driver):
     page = LoginPage(driver)
 
     with allure.step("Открыть страницу"):
-        page.open("https://example.com/login")
+        page.open("https://the-internet.herokuapp.com/login")
 
     with allure.step("Ввести логин"):
         page.enter_username("wrong_user")
